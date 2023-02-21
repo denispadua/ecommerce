@@ -1,8 +1,28 @@
-<h1>Products</h1>
-<ul>
-{% for product in object_list %}
-    <li>{{ product.product_name }}</li>
-{% empty %}
-    <li>No products yet.</li>
-{% endfor %}
-</ul>
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<div class="container">
+    {% for product in object_list %}
+        {% if forloop.counter0|divisibleby:3 %}
+        <div class="row mb-4">
+        {% endif %}
+        
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="images/{{ product.image }}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ product.product_name }}</h5>
+                      <p class="card-text">{{ product.description }}</p>
+                      <a href="#" class="btn btn-primary">Comprar</a>
+                    </div>
+                  </div>
+            </div>
+        {% if forloop.counter|divisibleby:3 %}
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}
