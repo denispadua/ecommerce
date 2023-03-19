@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
+from django.views.generic.detail import DetailView
 from django.urls import reverse
 
 from apps.product.models import ProductModel
@@ -15,3 +16,6 @@ class ProductCreateView(CreateView):
 
     def get_success_url(self) -> str:
         return reverse('product_list')
+    
+class ProductDetailView(DetailView):
+    model = ProductModel

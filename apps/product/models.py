@@ -1,5 +1,7 @@
 import uuid
 from django.db import models
+from django.urls import reverse
+
 
 from apps.category.models import CategoryModel
 from django.core.validators import MinValueValidator
@@ -14,3 +16,6 @@ class ProductModel(models.Model):
     price = models.DecimalField(max_digits = 8,decimal_places=2, validators=[MinValueValidator(Decimal('0.00'))])
     description = models.CharField(max_length=300)
     category = models.ForeignKey(CategoryModel, on_delete=models.DO_NOTHING)
+
+    def get_absolute_url(self):
+        return reverse("product_detail", args=[str(self.id)])
