@@ -19,3 +19,4 @@ class ProductCreateView(CreateView):
     
 class ProductDetailView(DetailView):
     model = ProductModel
+    context_object_name = "product"
