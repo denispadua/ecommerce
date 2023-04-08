@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<div class="container">
+    {% if product.image %}
+        <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+    {% endif %}
+    <p>{{product.product_name}}</p>
+</div>
+
+{% endblock %}
