@@ -3,10 +3,34 @@
 {% block content %}
 {% load static %}
 <div class="container">
-    {% if product.image %}
-        <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
-    {% endif %}
-    <p>{{product.product_name}}</p>
+    <div class="row border">
+        <div class="col">
+            {% if product.image %}
+                <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+            {% endif %}
+        </div>
+        <div class="col mt-3">
+            <div class="row">
+                <h1 class="fs-1">{{product.product_name}}</h1>
+            </div>
+            <div class="row">
+                <h3 class="fs-3">R$ {{product.price}}</h3>
+            </div>
+            <div class="row mt-5">
+                <div class="d-grid gap-2">
+                    <a href="{{ product.get_absolute_url }}" class="btn btn-primary">Comprar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row text-center mt-2">
+        <h1 class="fs-1">Detalhes</h1>
+    </div>
+    <div class="row mt-5">
+        <p> {{product.description}}</p>
+    </div>
 </div>
 
 {% endblock %}
